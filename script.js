@@ -7,6 +7,7 @@ botao.addEventListener("click", () => {
   for (let index = 1; index < cores.length; index += 1) {
     const randomColor = getRandomColor();
     cores[index].style.backgroundColor = randomColor;
+    localStorage.setItem("savepage", JSON.stringify(randomColor));
   }
 });
 
@@ -16,3 +17,5 @@ function getRandomColor() {
   const b = Math.floor(Math.random() * 256);
   return `rgb(${r}, ${g}, ${b})`;
 }
+
+
