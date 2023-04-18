@@ -1,6 +1,18 @@
 const botao = document.getElementById("button-random-color");
 const cores = document.getElementsByClassName("color");
 const paleta = document.getElementById("color-palette");
+const bordaDePixel = document.getElementById("pixel-board")
+
+for (let i = 0; i < 5; i++) {
+  const linha = document.createElement('div');
+  linha.className = 'pixel-line';
+  for (let j = 0; j < 5; j++) {
+    const pixel = document.createElement('div');
+    pixel.className = 'pixel';
+    linha.appendChild(pixel);
+  }
+  bordaDePixel.appendChild(linha);
+}
 
 function getRandomColor() {
   const r = Math.floor(Math.random() * 256);
@@ -21,8 +33,8 @@ function restaurandoPaleta() {
   const savedPalette = localStorage.getItem("colorPalette");
   if (savedPalette) {
     const savedColors = JSON.parse(savedPalette);
-    for (let i = 0; i < savedColors.length; i++) {
-      cores[i].style.backgroundColor = savedColors[i];
+    for (let index = 0; index < savedColors.length; index += 1) {
+      cores[index].style.backgroundColor = savedColors[index];
     }
   }
 }
@@ -36,6 +48,11 @@ botao.addEventListener("click", () => {
   salvandoPaleta();
 });
 
+
+
+
+
 window.addEventListener("load", () => {
   restaurandoPaleta();
 });
+
