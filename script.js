@@ -10,7 +10,7 @@ for (let i = 0; i < 5; i++) {
     const pixel = document.createElement('div');
     pixel.className = 'pixel';
     linha.appendChild(pixel);
-  }
+  } 
   bordaDePixel.appendChild(linha);
 }
 
