@@ -30,4 +30,32 @@ randomButton.addEventListener('click', () => {
   for (let i = 1; i < coresDisponiveis.length; i++) {
     colorDivs[i].style.backgroundColor = randomColors[i-1];
   }
-});
+  savePaletteToLocalStorage(randomColors) // Requisito 5
+}); 
+
+
+// Requisito 5
+function savePaletteToLocalStorage(palette) {
+  const paletteString = JSON.stringify(palette);
+  localStorage.setItem("colorPalette", paletteString);
+}
+
+
+function getSavedPaletteFromLocalStorage() {
+  const savedPalette = localStorage.getItem("colorPalette");
+  if (savedPalette) {
+    return JSON.parse(savedPalette);
+  }
+}
+
+function applySavedPaletteFromLocalStorage() {
+  const savedPalette = getSavedPaletteFromLocalStorage();
+  if (savedPalette && savedPalette.length > 0) {
+    for (let i = 1; i < coresDisponiveis.length; i++) {
+      colorDivs[i].style.backgroundColor = savedPalette[i-1];
+    }
+  }
+}
+
+
+applySavedPaletteFromLocalStorage();
