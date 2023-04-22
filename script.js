@@ -5,7 +5,7 @@ let paleta = document.querySelector("#color-palette");
 let coresDisponiveis = ["yellow", "pink", "green"];
 
 // Requisito 6
-let PixelBoard = document.querySelector("#pixel-board");
+let pixelBoard = document.querySelector("#pixel-board");
 
 
 const randomButton = document.querySelector('#button-random-color');
@@ -69,7 +69,7 @@ applySavedPaletteFromLocalStorage();
 for (let i = 0; i < 5; i +=1){
   const reta = document.createElement("div");
   reta.className = "reta";
-  PixelBoard.appendChild(reta);
+  pixelBoard.appendChild(reta);
   
   for (let j = 0; j < 5; j +=1){
     const pixel = document.createElement("div");
@@ -113,6 +113,32 @@ clearButton.addEventListener('click', () => {
     pixels[i].style.backgroundColor = 'white'; 
   }
 });
+
+// Requisito 12
+function savePixelsToLocalStorage() {
+  const pixels = document.querySelectorAll('.pixel');
+  const pixelColors = [];
+  for (let i = 0; i < pixels.length; i++) {
+    pixelColors.push(pixels[i].style.backgroundColor);
+  }
+  localStorage.setItem("pixelBoard", JSON.stringify(pixelColors));
+}
+function paintPixel(event) {
+  const selectedColor = document.querySelector('.selected').style.backgroundColor;
+  event.target.style.backgroundColor = selectedColor;
+  savePixelsToLocalStorage();
+}
+function applySavedPixelsFromLocalStorage() {
+  const savedPixels = localStorage.getItem("pixelBoard");
+  if (savedPixels) {
+    const pixelColors = JSON.parse(savedPixels);
+    const pixels = document.querySelectorAll('.pixel');
+    for (let i = 0; i < pixels.length; i++) {
+      pixels[i].style.backgroundColor = pixelColors[i];
+    }
+  }
+}
+applySavedPixelsFromLocalStorage();
 
 
 
