@@ -4,6 +4,12 @@
     margin-top: 10px;
   }
   
+  #pixel-board{
+    border: 1px solid black;
+  }
+
+
+
   .color {
     border: 1px solid black;
     display: inline-block;
@@ -12,3 +18,10 @@
     width: 50px;
   }
   
+  .pixel{
+    border: 1px solid black;
+    display: inline-block;
+    height: 40px;
+    margin-right: 10px;
+    width: 40px;
+  }
