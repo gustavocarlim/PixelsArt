@@ -55,8 +55,8 @@ function getSavedPaletteFromLocalStorage() {
 function applySavedPaletteFromLocalStorage() {
   const savedPalette = getSavedPaletteFromLocalStorage();
   if (savedPalette && savedPalette.length > 0) {
-    for (let i = 1; i < coresDisponiveis.length; i++) {
-      colorDivs[i].style.backgroundColor = savedPalette[i-1];
+    for (let i = 0; i < coresDisponiveis.length; i++) {
+      colorDivs[i].style.backgroundColor = savedPalette[i];
     }
   }
 }
@@ -92,8 +92,6 @@ const coresPaleta = document.querySelectorAll('.color');
 for (let cor of coresPaleta) {
   cor.addEventListener('click', selecionaCor);
 }
-
-// Requisito 10
 
 
 
