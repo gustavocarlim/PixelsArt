@@ -93,6 +93,27 @@ for (let cor of coresPaleta) {
   cor.addEventListener('click', selecionaCor);
 }
 
+// Requisito 10
+function paintPixel(event) {
+  const selectedColor = document.querySelector('.selected').style.backgroundColor;
+  event.target.style.backgroundColor = selectedColor;
+}
+const pixels = document.querySelectorAll('.pixel');
+for (let i = 0; i < pixels.length; i++) {
+  pixels[i].addEventListener('click', paintPixel);
+}
+
+
+// Requisito 11
+const clearButton = document.getElementById('clear-board');
+
+clearButton.addEventListener('click', () => {
+  const pixels = document.querySelectorAll('.pixel');
+  for (let i = 0; i < pixels.length; i++) {
+    pixels[i].style.backgroundColor = 'white'; 
+  }
+});
+
 
 
 
